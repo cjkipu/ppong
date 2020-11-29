@@ -12,6 +12,7 @@ var yBallChange = 5;
 var wWidth = window.innerWidth / 2;
 var wHeight = window.innerHeight;
 
+var compf = false;
 var started = false;
 
 var game = false
@@ -32,6 +33,7 @@ function setup() {
     var canvas = createCanvas(wWidth, wHeight);
     canvas.parent('canvas');
     $(".card-end").hide();
+    $(".card-suc").hide();
     game = true;
 }
 
@@ -72,8 +74,9 @@ function draw() {
             var audio = new Audio('assets/sound/fail.wav');
             audio.volume = 0.25
             audio.play();
-            //game = false
-            $(".card-end").show();
+            game = false
+            $(".card-suc").show();
+
         }
 
         //if collide with paddle
@@ -192,6 +195,7 @@ function pause() {
 
 function newgame() {
     $(".card-end").hide();
+    $(".card-suc").hide();
     console.log("newww")
     console.log(highscore)
     score = 0;

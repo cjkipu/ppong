@@ -46,6 +46,18 @@ div {
 
 }
 
+.card-suc {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0rem;
+    left: 0rem;
+    top: auto;
+    height: 100vh;
+    width: 50vw;
+    backdrop-filter: blur(20px);
+    opacity: 0.82;
+}
+
 .btn {
     box-shadow: none !important;
     border-radius: 50px !important;
@@ -56,10 +68,11 @@ div {
     transform: scale(1.01);
 }
 
-.btn:focus{
-    
+.btn:focus {
+
     animation: 1s rubberBand linear;
 }
+
 .btnb:active {
 
     animation: 1s rubberBand linear;
