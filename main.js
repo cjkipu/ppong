@@ -7,8 +7,9 @@ var xBall = (Math.random() * 500) + 50;
 var yBall = 120;
 var diameter = 40;
 var d2 = diameter + 10;
-var xBallChange = 5;
-var yBallChange = 5;
+var speed = 5;
+var xBallChange = speed;
+var yBallChange = speed;
 var wWidth = window.innerWidth / 2;
 var wHeight = window.innerHeight;
 
@@ -71,7 +72,7 @@ function draw() {
 
         //game over for comp
         if ((yBall - (diameter / 2)) < yPaddle2) {
-            var audio = new Audio('assets/sound/fail.wav');
+            var audio = new Audio('assets/sound/win.wav');
             audio.volume = 0.25
             audio.play();
             game = false
@@ -84,8 +85,9 @@ function draw() {
             xBall < xPaddle + paddleWidth) &&
             (yBall + (diameter / 2) >= yPaddle)) {
 
-            xBallChange *= -1;
+            xBallChange *= -1 * Math.random() * 3;
             yBallChange *= -1;
+
 
             var audio = new Audio('assets/sound/knock4.wav');
             audio.volume = 0.10
@@ -100,7 +102,7 @@ function draw() {
         if ((xBall > xPaddle2 &&
             xBall < xPaddle2 + paddleWidth2) &&
             (yBall - (diameter / 2) <= yPaddle2)) {
-            xBallChange *= -1;
+            xBallChange *= -1 * Math.random() * 2;
             yBallChange *= -1;
 
             var audio = new Audio('assets/sound/knock2.wav');
@@ -194,6 +196,8 @@ function pause() {
 }
 
 function newgame() {
+    xBall = (Math.random() * 500) + 50;
+    yBall = 120;
     $(".card-end").hide();
     $(".card-suc").hide();
     console.log("newww")
@@ -202,10 +206,11 @@ function newgame() {
     console.log(highscore)
     xPaddle = (wWidth / 2) - 50;
     yPaddle = wHeight - 50;
-    xBall = (Math.random() * 500) + 50;
-    yBall = 120;
+
     game = true;
     ps = false;
+    started = false;
+    xBallChange = speed;
 }
 
 function keyPressed() {
